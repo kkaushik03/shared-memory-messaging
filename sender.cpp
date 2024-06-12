@@ -22,6 +22,7 @@ void* sharedMemPtr;
  */
 void init(int& shmid, int& msqid, void*& sharedMemPtr)
 {
+	
 	/* TODO: 
         1. Create a file called keyfile.txt containing string "Hello world" (you may do
  	    so manually or from the code).
@@ -34,12 +35,43 @@ void init(int& shmid, int& msqid, void*& sharedMemPtr)
 	*/
 	
 
-	
+	key_t key = ftok("keyfile.txt", 'a');
+       if (key == -1) {
+           perror("ftok");
+           exit(1);
+       }
 	/* TODO: Get the id of the shared memory segment. The size of the segment must be SHARED_MEMORY_CHUNK_SIZE */
 	/* TODO: Attach to the shared memory */
 	/* TODO: Attach to the message queue */
 	/* Store the IDs and the pointer to the shared memory region in the corresponding function parameters */
 	
+  
+   /* TODO: Allocate a shared memory segment. The size of the segment must be SHARED_MEMORY_CHUNK_SIZE. */
+   shmid = shmget(key, SHARED_MEMORY_CHUNK_SIZE, IPC_CREAT | 0666);
+   if (shmid == -1) {
+       perror("shmget");
+       exit(1);
+   }
+
+
+   /* TODO: Attach to the shared memory */
+   sharedMemPtr = shmat(shmid, NULL, 0);
+   if (sharedMemPtr == (void*)-1) {
+       perror("shmat");
+       exit(1);
+   }
+
+
+   /* TODO: Create a message queue */
+   msqid = msgget(key, IPC_CREAT | 0666);
+   if (msqid == -1) {
+       perror("msgget");
+       exit(1);
+   }
+   /* TODO: Store the IDs and the pointer to the shared memory region in the corresponding parameters */
+   printf("Shared memory ID: %d\n", shmid);
+   printf("Message queue ID: %d\n", msqid);
+
 }
 
 /**
@@ -51,6 +83,10 @@ void init(int& shmid, int& msqid, void*& sharedMemPtr)
 void cleanUp(const int& shmid, const int& msqid, void* sharedMemPtr)
 {
 	/* TODO: Detach from shared memory */
+	if (shmdt(sharedMemPtr) == -1) {
+        perror("shmdt");
+        exit(1);
+    }
 }
 
 /**
@@ -95,14 +131,26 @@ unsigned long sendFile(const char* fileName)
 		}
 		
 		/* TODO: count the number of bytes sent. */		
-			
+		numBytesSent += sndMsg.size;
+
 		/* TODO: Send a message to the receiver telling him that the data is ready
  		 * to be read (message of type SENDER_DATA_TYPE).
  		 */
+		sndMsg.mtype = SENDER_DATA_TYPE;
+        if(msgsnd(msqid, &sndMsg, sizeof(sndMsg) - sizeof(long), 0) == -1)
+        {
+            perror("msgsnd");
+            exit(1);
+        }
 		
 		/* TODO: Wait until the receiver sends us a message of type RECV_DONE_TYPE telling us 
  		 * that he finished saving a chunk of memory. 
  		 */
+		if(msgrcv(msqid, &rcvMsg, sizeof(rcvMsg) - sizeof(long), RECV_DONE_TYPE, 0) == -1)
+        {
+            perror("msgrcv");
+            exit(1);
+        }
 	}
 	
 
@@ -110,7 +158,12 @@ unsigned long sendFile(const char* fileName)
  	  * Lets tell the receiver that we have nothing more to send. We will do this by
  	  * sending a message of type SENDER_DATA_TYPE with size field set to 0. 	
 	  */
-
+	sndMsg.size = 0;
+    if(msgsnd(msqid, &sndMsg, sizeof(sndMsg) - sizeof(long), 0) == -1)
+    {
+        perror("msgsnd");
+        exit(1);
+    }
 		
 	/* Close the file */
 	fclose(fp);
@@ -131,16 +184,28 @@ void sendFileName(const char* fileName)
 	 * the maximum buffer size in the fileNameMsg
 	 * struct. If exceeds, then terminate with an error.
 	 */
+	if (fileNameSize > MAX_FILE_NAME_SIZE - 1) {
+        fprintf(stderr, "Error: File name is too long.\n");
+        exit(1);
+    }
 
 	/* TODO: Create an instance of the struct representing the message
 	 * containing the name of the file.
 	 */
+	struct fileNameMsg fnMsg;
 
 	/* TODO: Set the message type FILE_NAME_TRANSFER_TYPE */
+	fnMsg.mtype = FILE_NAME_TRANSFER_TYPE;
 
 	/* TODO: Set the file name in the message */
+	strncpy(fnMsg.fileName, fileName, MAX_FILE_NAME_SIZE);
+    fnMsg.fileName[MAX_FILE_NAME_SIZE - 1] = '\0';
 
 	/* TODO: Send the message using msgsnd */
+	if (msgsnd(msqid, &fnMsg, sizeof(fnMsg.fileName), 0) == -1) {
+        perror("msgsnd");
+        exit(1);
+    }
 }
 
 
