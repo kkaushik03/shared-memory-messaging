@@ -3,6 +3,8 @@
 - Khushi Kaushik [kkaushik@csu.fullerton.edu] CPSC 351-01 Designed Resc.cpp file
 - Edward Hernandez [pluvius@csu.fullerton.edu] CPSC 351-01 Bugfix/Documentation
 - Joseph Velasquez [josephvelasquez@csu.fullerton.edu] CPSC 351-01 Bugfix/Testing
+Collaboration: Communication was handled through a Discord group chat where designers selected their desired task and provided updates
+ on how their work was going, to each other through out the week.
 # shared-memory-messaging
 
 An implementation of a file transfer mechanism using System V IPC mechanisms shared memory and message queues in C++. A "sender" reads a file and writes its contents to a shared memory. A "receiver" reads the data from the shared memory and processes it. In between, the sender-receiver communication is synchronized using message queues for data integrity and proper sequencing.
