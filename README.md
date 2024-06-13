@@ -1,11 +1,13 @@
-Collaboration: Communication was handled through a Discord group chat where designers selected their desired task and provided updates
- on how their work was going, to each other through out the week.
+
  
 # Team
 - Riya Jain [riyajain@csu.fullerton.edu] CPSC 351-01 Designed Sender.cpp file.
 - Khushi Kaushik [kkaushik@csu.fullerton.edu] CPSC 351-01 Designed Resc.cpp file
 - Edward Hernandez [pluvius@csu.fullerton.edu] CPSC 351-01 Bugfix/Documentation
 - Joseph Velasquez [josephvelasquez@csu.fullerton.edu] CPSC 351-01 Bugfix/Testing
+  
+Collaboration: Communication was handled through a Discord group chat where designers selected their desired task and provided updates
+ on how their work was going, to each other through out the week.
 
 # shared-memory-messaging
 
