@@ -44,7 +44,7 @@ make sender.cpp
 # Send a file
 ./sender <file_name>
 ```
-# Testing Screenshot
+# Testing Screenshots
 [Showcase of Terminal Output after starting Sender]
 ![Showcase of Terminal Output after starting Sender](images/testSend.png)
 [Showcase of Terminal Output after starting Receiver]
