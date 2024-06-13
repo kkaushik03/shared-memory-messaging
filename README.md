@@ -21,20 +21,22 @@ An implementation of a file transfer mechanism using System V IPC mechanisms sha
 
 ## Files
 - `sender.cpp`: The sender program reads a file and sends its data contents to the receiver.
-- `receiver.cpp`: The receiver program reads shared memory data and processes it.
+- `recv.cpp`: The receiver program reads shared memory data and processes it.
 - `msg.h`: Defines the structures used for messages.
 - `Makefile`: Makefile for building the project.
+- `signaldemo.cpp`: Simple Signal Handler.
 
 ## Example Commands
 ```sh
 # Compile the programs
-make
+make recv.cpp
+make sender.cpp
 
 # Start the receiver
-./receiver
+./recv
 
 # Send a file
 ./sender <file_name>
 ```
 # Testing Screenshot
-![Showcase of Terminal Output](images/testing.png)
+![Showcase of Terminal Output after starting Receiver](images/testing.png)
