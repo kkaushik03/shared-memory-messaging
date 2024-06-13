@@ -1,4 +1,4 @@
-#Team
+# Team
 - Riya Jain [riyajain@csu.fullerton.edu] CPSC 351-01 Designed Sender.cpp file.
 - Khushi Kaushik [kkaushik@csu.fullerton.edu] CPSC 351-01 Designed Resc.cpp file
 - Edward Hernandez [pluvius@csu.fullerton.edu] CPSC 351-01 Bugfix/Documentation
