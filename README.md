@@ -5,7 +5,7 @@
 - Joseph Velasquez [xxx@csu.fullerton.edu] CPSC 351-01 Bugfix/Testing
 # shared-memory-messaging
 
-An implementation of a file transfer mechanism using System V IPC mechanisms shared memory and message queues in C. A "sender" reads a file and writes its contents to a shared memory. A "receiver" reads the data from the shared memory and processes it. In between, the sender-receiver communication is synchronized using message queues for data integrity and proper sequencing.
+An implementation of a file transfer mechanism using System V IPC mechanisms shared memory and message queues in C++. A "sender" reads a file and writes its contents to a shared memory. A "receiver" reads the data from the shared memory and processes it. In between, the sender-receiver communication is synchronized using message queues for data integrity and proper sequencing.
 
 ## Key Features
 - Uses System V shared memory for fast data transfer between processes.
@@ -20,8 +20,8 @@ An implementation of a file transfer mechanism using System V IPC mechanisms sha
 3. Run the sender program with the file you want to send as an argument.
 
 ## Files
-- `sender.c`: The sender program reads a file and sends its data contents to the receiver.
-- `receiver.c`: The receiver program reads shared memory data and processes it.
+- `sender.cpp`: The sender program reads a file and sends its data contents to the receiver.
+- `receiver.cpp`: The receiver program reads shared memory data and processes it.
 - `msg.h`: Defines the structures used for messages.
 - `Makefile`: Makefile for building the project.
 
