@@ -39,4 +39,6 @@ make sender.cpp
 ./sender <file_name>
 ```
 # Testing Screenshot
+[Showcase of Terminal Output after starting Receiver]
 ![Showcase of Terminal Output after starting Receiver](images/testing.png)
+[Showcase of Terminal Output after starting Sender]
