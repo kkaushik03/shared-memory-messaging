@@ -35,6 +35,6 @@ make
 
 # Send a file
 ./sender <file_name>
-
+```
 # Testing Screenshot
-![Showcase of Terminal Output]
+![Showcase of Terminal Output](images/testing.png)
