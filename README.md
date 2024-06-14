@@ -3,11 +3,11 @@
 # Team
 - Riya Jain [riyajain@csu.fullerton.edu] CPSC 351-01 Designed Sender.cpp file.
 - Khushi Kaushik [kkaushik@csu.fullerton.edu] CPSC 351-01 Designed Resc.cpp file
-- Edward Hernandez [pluvius@csu.fullerton.edu] CPSC 351-01 Bugfix/Documentation
+- Edward Hernande* [pluvius@csu.fullerton.edu] CPSC 351-01 Bugfix/Documentation
 - Joseph Velasquez [josephvelasquez@csu.fullerton.edu] CPSC 351-01 Bugfix/Testing
   
-Collaboration: Communication was handled through a Discord group chat where designers selected their desired task and provided updates
- on how their work was going, to each other through out the week.
+**Collaboration: Communication was handled through a Discord group chat where designers selected their desired task and provided updates
+ on how their work was going, to each other through out the week.**
 
 # shared-memory-messaging
 
@@ -21,6 +21,9 @@ An implementation of a file transfer mechanism using System V IPC mechanisms sha
 - Shows setup, usage, and cleanup of IPC resources in a Linux environment.
 
 ## Usage Instructions
+**If running application on Mac or Linux, should automatically be ran on the terminal, otherwise if 
+using Windows it may require the additional download of Windows subsystem for Linux to run properly!**
+
 1. Compile the sender and receiver programs.
 2. Run the receiver program to start listening in on incoming file data.
 3. Run the sender program with the file you want to send as an argument.
