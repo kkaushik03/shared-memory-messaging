@@ -9,6 +9,8 @@
 **Collaboration: Communication was handled through a Discord group chat where designers selected their desired task and provided updates
  on how their work was going, to each other through out the week.**
 
+(Github: https://github.com/kkaushik03/shared-memory-messaging)
+
 # shared-memory-messaging
 
 An implementation of a file transfer mechanism using System V IPC mechanisms shared memory and message queues in C++. A "sender" reads a file and writes its contents to a shared memory. A "receiver" reads the data from the shared memory and processes it. In between, the sender-receiver communication is synchronized using message queues for data integrity and proper sequencing.
@@ -66,6 +68,7 @@ clang -o sender sender.cpp
 # Testing Screenshots
 [Showcase of Terminal Output after starting Sender]
 ![Showcase of Terminal Output after starting Sender](images/testSend.png)
+
 [Showcase of Terminal Output after starting Receiver]
 ![Showcase of Terminal Output after starting Receiver](images/testReceive.png)
 
