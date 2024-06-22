@@ -46,6 +46,15 @@ make sender.cpp
 
 # Send a file
 ./sender <file_name>
+
+#or
+#Creating file
+echo “Hello World” > keyfile.txt
+#Compile C++ source to executables:
+clang++ -o recv recv.cpp
+clang -o sender sender.cpp
+#Run the code 
+./sender Keyfile.txt
 ```
 # Testing Screenshots
 [Showcase of Terminal Output after starting Sender]
