@@ -28,6 +28,13 @@ using Windows it may require the additional download of Windows subsystem for Li
 2. Run the receiver program to start listening in on incoming file data.
 3. Run the sender program with the file you want to send as an argument.
 
+OR
+
+1. Create keyfile.txt using the command: echo "Hello world" > keyfile.txt
+2. Use the command: clang++ -o recv recv.cpp
+3. Use the command: clang++ -o sender sender.cpp
+4. Then run the command: ./sender keyfile.txt
+
 ## Files
 - `sender.cpp`: The sender program reads a file and sends its data contents to the receiver.
 - `recv.cpp`: The receiver program reads shared memory data and processes it.
